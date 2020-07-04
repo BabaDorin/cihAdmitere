@@ -8,6 +8,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class CihCardComponent implements OnInit {
   @Input('dates') dates;
   @Output() datePicked = new EventEmitter();
+  pickedDate= {key: "2"};
   
   constructor() { }
 
@@ -15,6 +16,7 @@ export class CihCardComponent implements OnInit {
   }
 
   pickDate(d){
+   this.pickedDate = d;
    this.datePicked.emit(d);
   }
 }

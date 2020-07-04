@@ -1,7 +1,9 @@
 <div class="row">
     <ng-container *ngFor="let d of dates; let i = index">
         <div class="col">
-            <div class="card text-center"
+            <div
+                [class.dateHighlighted]="d.key === pickedDate.key" 
+                class="card text-center"
                 (click)="pickDate(d)">
                 <div class="card-body">
                     <h5 class="card-title">{{ d.data }}</h5>

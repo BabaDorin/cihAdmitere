@@ -28,7 +28,6 @@ import { CihCardComponent } from './cih-card/cih-card.component';
       { path: '', component: HomeComponent },
       { path: 'specialitate', component: SpecialityComponent},
       { path: 'data/:specialitate', component: DateComponent},
-      { path: 'formular', component: AppointmentFormComponent}
     ])
   ],
   providers: [],

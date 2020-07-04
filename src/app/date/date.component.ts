@@ -11,6 +11,8 @@ export class DateComponent{
   specialitate: string;
   dataAleasa: boolean;
   data;
+  timePicked;
+
   time = [
     '9:00', '9:30', 
     '10:00', '10:30', 
@@ -48,6 +50,12 @@ export class DateComponent{
     if(d) {
       this.data = d;
       this.dataAleasa = true;
+
+      this.timePicked = null;
     }
+  }
+
+  pickTime(t){
+    this.timePicked=t;
   }
 }

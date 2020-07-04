@@ -1,3 +1,12 @@
 .jumbotron{
     transition: 0.3s;
 }
+
+.alert:hover{
+    background-color: floralwhite;
+    cursor: pointer;
+}
+
+.timeHighlighted{
+    background-color: floralwhite;
+}
