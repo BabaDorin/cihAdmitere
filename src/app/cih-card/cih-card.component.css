@@ -1,0 +1,24 @@
+.card{
+    margin-top: 6px;
+    transition: 0.3s;
+}
+
+.card:hover{
+    background-color: floralwhite;
+    cursor: pointer;
+}
+
+.card-title{
+    font-weight: bold;
+    font-size: 50px;
+    color: gray;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.card-text{
+    font-size: 25px;
+    font-weight: bold;
+    color: darkgray;
+}
+

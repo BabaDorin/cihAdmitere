@@ -9,6 +9,7 @@ import { TimeComponent } from './time/time.component';
 import { AppointmentFormComponent } from './appointment-form/appointment-form.component';
 import { SpecialityComponent } from './speciality/speciality.component';
 import { HomeComponent } from './home/home.component';
+import { CihCardComponent } from './cih-card/cih-card.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { HomeComponent } from './home/home.component';
     TimeComponent,
     AppointmentFormComponent,
     SpecialityComponent,
-    HomeComponent
+    HomeComponent,
+    CihCardComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +27,7 @@ import { HomeComponent } from './home/home.component';
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
       { path: 'specialitate', component: SpecialityComponent},
-      { path: 'data', component: DateComponent},
+      { path: 'data/:specialitate', component: DateComponent},
       { path: 'formular', component: AppointmentFormComponent}
     ])
   ],
