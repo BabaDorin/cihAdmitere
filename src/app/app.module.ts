@@ -11,6 +11,7 @@ import { AppointmentFormComponent } from './appointment-form/appointment-form.co
 import { SpecialityComponent } from './speciality/speciality.component';
 import { HomeComponent } from './home/home.component';
 import { CihCardComponent } from './cih-card/cih-card.component';
+import { Err404Component } from './err404/err404.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CihCardComponent } from './cih-card/cih-card.component';
     AppointmentFormComponent,
     SpecialityComponent,
     HomeComponent,
-    CihCardComponent
+    CihCardComponent,
+    Err404Component
   ],
   imports: [
     BrowserModule,
@@ -29,6 +31,7 @@ import { CihCardComponent } from './cih-card/cih-card.component';
       { path: '', component: HomeComponent },
       { path: 'specialitate', component: SpecialityComponent},
       { path: 'data/:specialitate', component: DateComponent},
+      { path: '**', component: Err404Component},
     ]),
     FormsModule
   ],

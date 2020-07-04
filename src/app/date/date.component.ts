@@ -1,6 +1,7 @@
 import { CihCardComponent } from '../cih-card/cih-card.component';
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule, Router } from '@angular/router';
+import { identifierModuleUrl } from '@angular/compiler';
 
 @Component({
   selector: 'app-date',
@@ -12,6 +13,14 @@ export class DateComponent{
   dataAleasa: boolean;
   data;
   timePicked;
+
+  specialitati=[
+    'contabilitate',
+    'papp',
+    'aaw',
+    'ecologie',
+    'invatamantPrimar'
+  ]
 
   time = [
     { t: '9:00', available: true}, 
@@ -45,8 +54,12 @@ export class DateComponent{
     { key: "31iulie", data: 31, luna:'iulie', ziua:'Vineri'},
   ]
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private router: Router) {
     this.specialitate = route.snapshot.paramMap.get('specialitate');
+    
+    if(!this.specialitati.includes(this.specialitate)){
+      this.router.navigate(['/error']);
+    }
   }
 
   datePicked(d){
