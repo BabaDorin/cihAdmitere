@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { CihCardComponent } from '../cih-card/cih-card.component';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -6,9 +7,19 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './date.component.html',
   styleUrls: ['./date.component.css']
 })
-export class DateComponent {
+export class DateComponent{
   specialitate: string;
   dataAleasa: boolean;
+  data;
+  time = [
+    '9:00', '9:30', 
+    '10:00', '10:30', 
+    '11:00', '11:30', 
+    '12:00', '12:30', 
+    '13:00', '13:30', 
+    '14:00', '14:30', 
+  ];
+
   dates = [
     { key: "13iulie", data: 13, luna:'iulie', ziua:'Luni'},
     { key: "14ulie", data: 14, luna:'iulie', ziua:'Marti'},
@@ -33,7 +44,10 @@ export class DateComponent {
     this.specialitate = route.snapshot.paramMap.get('specialitate');
   }
 
-  pickTime(d){
-    console.log(d);
+  datePicked(d){
+    if(d) {
+      this.data = d;
+      this.dataAleasa = true;
+    }
   }
 }

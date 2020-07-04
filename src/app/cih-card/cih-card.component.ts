@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core'; 
 
 @Component({
   selector: 'cih-card',
@@ -7,11 +7,14 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CihCardComponent implements OnInit {
   @Input('dates') dates;
-
-  dataAleasa: boolean;
-
+  @Output() datePicked = new EventEmitter();
+  
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  pickDate(d){
+   this.datePicked.emit(d);
   }
 }

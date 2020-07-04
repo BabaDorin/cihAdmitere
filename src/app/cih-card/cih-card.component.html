@@ -1,17 +1,16 @@
 <div class="row">
     <ng-container *ngFor="let d of dates; let i = index">
         <div class="col">
-            <a (click)="pickTime(d)">
-                <div class="card text-center">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ d.data }}</h5>
-                        <p class="card-text">{{ d.luna }}</p>
-                    </div>
-                    <div class="card-footer">
-                        {{ d.ziua }}
-                    </div>
+            <div class="card text-center"
+                (click)="pickDate(d)">
+                <div class="card-body">
+                    <h5 class="card-title">{{ d.data }}</h5>
+                    <p class="card-text">{{ d.luna }}</p>
                 </div>
-            </a>
+                <div class="card-footer">
+                    {{ d.ziua }}
+                </div>
+            </div>
         </div>
         <div *ngIf="(i + 1) % 5 === 0" class="w-100"></div>
     </ng-container>
