@@ -18,4 +18,8 @@ export class AppointmentFormComponent{
     this.data = route.snapshot.paramMap.get('data');
     this.ora = route.snapshot.paramMap.get('ora');
   }
+
+  onSubmit(stuff){
+    //input is valid, save the appointment
+  }
 }

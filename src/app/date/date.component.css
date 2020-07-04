@@ -10,3 +10,12 @@
 .timeHighlighted{
     background-color: floralwhite;
 }
+
+.unavailable{
+    background-color: lightgray;
+}
+
+.unavailable:hover{
+    cursor: default;
+    background-color: lightgray;
+}

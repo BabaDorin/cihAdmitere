@@ -14,12 +14,15 @@ export class DateComponent{
   timePicked;
 
   time = [
-    '9:00', '9:30', 
-    '10:00', '10:30', 
-    '11:00', '11:30', 
-    '12:00', '12:30', 
-    '13:00', '13:30', 
-    '14:00', '14:30', 
+    { t: '9:00', available: true}, 
+    { t: '9:30', available: false}, 
+    { t: '10:00', available: true}, 
+    { t: '10:30', available: true}, 
+    { t: '11:00', available: false}, 
+    { t: '11:30', available: false}, 
+    { t: '12:00', available: false}, 
+    { t: '12:30', available: true}, 
+    { t: '13:00', available: true},
   ];
 
   dates = [
@@ -56,6 +59,8 @@ export class DateComponent{
   }
 
   pickTime(t){
-    this.timePicked=t;
+    if(t.available){
+      this.timePicked=t;
+    }
   }
 }

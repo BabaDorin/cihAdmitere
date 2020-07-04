@@ -1,15 +1,33 @@
-<form>
-    <div class="form-group">
-      <label for="exampleInputEmail1">Nume</label>
-      <input class="form-control">      
-    </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">Password</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-    </div>
-    <div class="form-check">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-      <label class="form-check-label" for="exampleCheck1">Check me out</label>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
+<p class="lead">Completati formularul pentru programare</p>
+<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+  <div class="form-group">
+    <label for="nume">Nume</label>
+    <input #nume="ngModel" ngModel name="nume" id="nume" class="form-control" required>
+  </div>
+  <div *ngIf="nume.touched && nume.invalid" class="alert alert-danger">
+    <p>Numele este necesar</p>
+  </div>
+
+  <div class="form-group">
+    <label for="prenume">Prenume</label>
+    <input #prenume="ngModel" ngModel name="prenume" id="prenume" class="form-control" required>
+  </div>
+  <div *ngIf="prenume.touched && prenume.invalid" class="alert alert-danger">
+    <p>Prenumele este necesar</p>
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input #email="ngModel" ngModel name="email" id="email" type="email" class="form-control" required>
+  </div>
+  <div *ngIf="email.touched && email.invalid" class="alert alert-danger">
+    <p>Emailul este necesar</p>
+  </div>
+
+  <button 
+    [disabled]="!(nume.valid && prenume.valid && email.valid)"
+    type="submit" 
+    class="btn btn-primary">
+    Submit
+  </button>
+</form>
