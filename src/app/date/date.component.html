@@ -22,8 +22,8 @@
         </div>
         <div *ngIf="(i + 1) % 4 === 0" class="w-100"></div>
       </ng-container>
+      <appointment-form *ngIf="timePicked">
+      </appointment-form>
     </div>
-    <appointment-form *ngIf="timePicked">
-    </appointment-form>
   </div>
 </div>
