@@ -1,1 +1,31 @@
-/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.css';
+
+.components a{
+    text-decoration: none;
+}
+
+.components{
+    align-items: center;
+    padding: 5%;
+}
+
+.cihComponent{
+    width: 1400;
+    min-width: 400;
+    margin: 40px auto;
+}
+
+.programare:hover{
+    text-decoration: none;
+    background-color: lightgray;
+}
+
+.programare{
+    text-align: center;
+    text-decoration: none;
+    color:#333;
+    background-color: whitesmoke;
+    padding:50px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
