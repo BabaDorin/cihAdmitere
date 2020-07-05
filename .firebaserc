@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "cih-admitere"
+  },
+  "targets": {
+    "cih-admitere": {
+      "hosting": {
+        "cihAdmitere": [
+          "cih-admitere"
+        ]
+      }
+    }
+  }
+}

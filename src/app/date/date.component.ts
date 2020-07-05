@@ -2,6 +2,7 @@ import { CihCardComponent } from '../cih-card/cih-card.component';
 import { Component } from '@angular/core';
 import { ActivatedRoute, RouterModule, Router } from '@angular/router';
 import { identifierModuleUrl } from '@angular/compiler';
+import { AppointmentService } from '../appointment.service';
 
 @Component({
   selector: 'app-date',
@@ -22,17 +23,18 @@ export class DateComponent{
     'invatamantPrimar'
   ]
 
-  time = [
-    { t: '9:00', available: true}, 
-    { t: '9:30', available: false}, 
-    { t: '10:00', available: true}, 
-    { t: '10:30', available: true}, 
-    { t: '11:00', available: false}, 
-    { t: '11:30', available: false}, 
-    { t: '12:00', available: false}, 
-    { t: '12:30', available: true}, 
-    { t: '13:00', available: true},
-  ];
+  time;
+  // time = [
+  //   { t: '9:00', available: true}, 
+  //   { t: '9:30', available: false}, 
+  //   { t: '10:00', available: true}, 
+  //   { t: '10:30', available: true}, 
+  //   { t: '11:00', available: false}, 
+  //   { t: '11:30', available: false}, 
+  //   { t: '12:00', available: false}, 
+  //   { t: '12:30', available: true}, 
+  //   { t: '13:00', available: true},
+  // ];
 
   dates = [
     { key: "13iulie", data: 13, luna:'iulie', ziua:'Luni'},
@@ -54,12 +56,21 @@ export class DateComponent{
     { key: "31iulie", data: 31, luna:'iulie', ziua:'Vineri'},
   ]
 
-  constructor(private route: ActivatedRoute, private router: Router) {
+  constructor(
+    private route: ActivatedRoute, 
+    private router: Router,
+    private appointmentService: AppointmentService) {
     this.specialitate = route.snapshot.paramMap.get('specialitate');
     
     if(!this.specialitati.includes(this.specialitate)){
       this.router.navigate(['/error']);
     }
+
+    appointmentService.getAll().subscribe(time => {
+      this.time = time;
+      console.log('time object after query: ');
+      console.log(this.time);
+    });
   }
 
   datePicked(d){
