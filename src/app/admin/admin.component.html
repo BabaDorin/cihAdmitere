@@ -10,13 +10,14 @@
         <h1 class="display-4">{{ data.data }} {{ data.luna }}</h1>
         <p class="lead">Programarile pentru aceasta data:</p>
         <div class="row">
+            <p *ngIf="inregistrari.length === 0" class="lead">Nu exista programari pentru aceasta data.</p>
             <ng-container *ngFor="let inr of inregistrari; let i = index">
                 <div
                     *ngIf="!inr.available" 
                     class="col-md-6">
-                    <p class="time">{{ inr.t }}</p>
-                    <p class="name">Andrei Viosle</p>
-                    <p class="email">Avsler@gmail.com</p>
+                    <p class="time">{{ inr.key }}</p>
+                    <p class="name">{{ inr.nume }}</p>
+                    <p class="email">{{ inr.prenume }}</p>
                     <br>
                 </div>
                 <div *ngIf="(i + 1) % 2 === 0" class="w-100"></div>

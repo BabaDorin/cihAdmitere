@@ -1,5 +1,5 @@
 <p class="lead">Completati formularul pentru programare</p>
-<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+<form #f="ngForm" (ngSubmit)="onSubmit(f.value)">
   <div class="form-group">
     <label for="nume">Nume</label>
     <input #nume="ngModel" ngModel name="nume" id="nume" class="form-control" required>
@@ -16,16 +16,8 @@
     <p>Prenumele este necesar</p>
   </div>
 
-  <div class="form-group">
-    <label for="email">Email</label>
-    <input #email="ngModel" ngModel name="email" id="email" type="email" class="form-control" required>
-  </div>
-  <div *ngIf="email.touched && email.invalid" class="alert alert-danger">
-    <p>Emailul este necesar</p>
-  </div>
-
   <button 
-    [disabled]="!(nume.valid && prenume.valid && email.valid)"
+    [disabled]="!(nume.valid && prenume.valid)"
     type="submit" 
     class="btn btn-primary">
     Submit

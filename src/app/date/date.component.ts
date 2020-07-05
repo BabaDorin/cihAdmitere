@@ -1,5 +1,5 @@
 import { CihCardComponent } from '../cih-card/cih-card.component';
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute, RouterModule, Router } from '@angular/router';
 import { identifierModuleUrl } from '@angular/compiler';
 import { AppointmentService } from '../appointment.service';
@@ -9,10 +9,11 @@ import { AppointmentService } from '../appointment.service';
   templateUrl: './date.component.html',
   styleUrls: ['./date.component.css']
 })
-export class DateComponent{
+export class DateComponent implements OnDestroy{
   specialitate: string;
   dataAleasa: boolean;
   data;
+  subscription;
   timePicked;
 
   specialitati=[
@@ -72,7 +73,7 @@ export class DateComponent{
       this.data = d;
       this.dataAleasa = true;
       
-      this.appointmentService.getAll(this.specialitate, this.data.key).subscribe(time => {
+      this.subscription = this.appointmentService.getAll(this.specialitate, this.data.key).subscribe(time => {
         console.log('called getAll('+this.specialitate+', ' + this.data.key+')');
         this.time = time;
         console.log('time object after query: ');
@@ -87,5 +88,9 @@ export class DateComponent{
     if(t.available){
       this.timePicked=t;
     }
+  }
+
+  ngOnDestroy(): void{
+    this.subscription.unsubscribe();
   }
 }

@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AppointmentService } from '../appointment.service';
 
 @Component({
   selector: 'appointment-form',
@@ -9,17 +10,15 @@ import { ActivatedRoute } from '@angular/router';
 
 export class AppointmentFormComponent{
 
-  specialitate;
-  data;
-  ora;
+  @Input('specialitate') specialitate;
+  @Input('data') data;
+  @Input('ora') ora;
 
-  constructor(private route: ActivatedRoute) {
-    this.specialitate = route.snapshot.paramMap.get('specialitate');
-    this.data = route.snapshot.paramMap.get('data');
-    this.ora = route.snapshot.paramMap.get('ora');
+  constructor(private appointmentService: AppointmentService) {
   }
 
-  onSubmit(stuff){
-    //input is valid, save the appointment
+  onSubmit(form){
+    console.log('data: ' + this.data + '  ora: ' + this.ora)
+    this.appointmentService.saveAppointment(this.specialitate, this.data, this.ora, {nume: form['nume'], prenume:form['prenume']});
   }
 }
