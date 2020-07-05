@@ -11,8 +11,15 @@ export class AppointmentService {
 
   }
 
-  getAll(){
-    return this.db.list('/time').snapshotChanges().pipe(
+  getAll(specialitate:string, data:string){
+    return this.db.list('/'+specialitate+'/'+data).snapshotChanges().pipe(
+      map(actions => actions.map(a => ({ key: a.key, available: a.payload.val()['liber']})))
+    );
+  }
+
+  getAllForAdmin(){
+
+    return this.db.list('/{{specialitate}}/{{data}}').snapshotChanges().pipe(
       map(actions => actions.map(a => ({ key: a.key, ...a.payload.val() as {}})))
     );
   }

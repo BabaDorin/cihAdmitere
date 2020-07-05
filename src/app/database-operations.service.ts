@@ -13,6 +13,8 @@ export class DatabaseOperationsService {
 
   }
 
+
+
   init(){
     // Generates objects as following
     // ♦ specialitate
@@ -37,14 +39,15 @@ export class DatabaseOperationsService {
     this.data=[
       '13iulie', '14iulie',
       '15iulie', '16iulie',
-      '17iulie', '18iulie',
-      '19iulie', '20iulie',
+      '17iulie', 
+      
+      '20iulie',
       '21iulie', '22iulie',
       '23iulie', '24iulie',
-      '25iulie', '26iulie',
+
       '27iulie', '28iulie',
       '29iulie', '30iulie',
-      '31iulie'
+      '31iulie', 
     ];
 
     this.ore=[

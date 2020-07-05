@@ -38,7 +38,7 @@ export class DateComponent{
 
   dates = [
     { key: "13iulie", data: 13, luna:'iulie', ziua:'Luni'},
-    { key: "14ulie", data: 14, luna:'iulie', ziua:'Marti'},
+    { key: "14iulie", data: 14, luna:'iulie', ziua:'Marti'},
     { key: "15iulie", data: 15, luna:'iulie', ziua:'Miercuri'},
     { key: "16iulie", data: 16, luna:'iulie', ziua:'Joi'},
     { key: "17iulie", data: 17, luna:'iulie', ziua:'Vineri'},
@@ -65,18 +65,19 @@ export class DateComponent{
     if(!this.specialitati.includes(this.specialitate)){
       this.router.navigate(['/error']);
     }
-
-    appointmentService.getAll().subscribe(time => {
-      this.time = time;
-      console.log('time object after query: ');
-      console.log(this.time);
-    });
   }
 
   datePicked(d){
     if(d) {
       this.data = d;
       this.dataAleasa = true;
+      
+      this.appointmentService.getAll(this.specialitate, this.data.key).subscribe(time => {
+        console.log('called getAll('+this.specialitate+', ' + this.data.key+')');
+        this.time = time;
+        console.log('time object after query: ');
+        console.log(this.time);
+      });
 
       this.timePicked = null;
     }
