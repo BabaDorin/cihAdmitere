@@ -16,8 +16,7 @@
                     *ngIf="!inr.available" 
                     class="col-md-6">
                     <p class="time">{{ inr.key }}</p>
-                    <p class="name">{{ inr.nume }}</p>
-                    <p class="email">{{ inr.prenume }}</p>
+                    <p class="name">{{ inr.nume }} {{ inr.prenume }}</p>
                     <br>
                 </div>
                 <div *ngIf="(i + 1) % 2 === 0" class="w-100"></div>

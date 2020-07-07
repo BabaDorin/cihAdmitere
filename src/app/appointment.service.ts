@@ -18,7 +18,8 @@ export class AppointmentService {
           this.db.object('/' + specialitate + '/' + data + '/' + ora + '/').update({
             liber: false,
             nume: indentitate['nume'],
-            prenume: indentitate['prenume']
+            prenume: indentitate['prenume'],
+            email: indentitate['email'],
           });
       }
     )

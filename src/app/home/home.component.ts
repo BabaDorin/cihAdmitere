@@ -9,11 +9,7 @@ import { DatabaseOperationsService } from '../database-operations.service';
 export class HomeComponent implements OnInit {
 
   constructor(private databaseOp: DatabaseOperationsService) { 
-    
-    
-    // console.log('gonna init');
-    // databaseOp.init();
-    // console.log('done');
+    //databaseOp.init();
   }
 
   ngOnInit(): void {
