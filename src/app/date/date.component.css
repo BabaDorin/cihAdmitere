@@ -13,6 +13,7 @@
 
 .unavailable{
     background-color: lightgray;
+    border-color: lightgray;
 }
 
 .unavailable:hover{

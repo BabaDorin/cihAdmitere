@@ -1,33 +1,48 @@
-<p class="lead">Completati formularul pentru programare</p>
-<form #f="ngForm" (ngSubmit)="onSubmit(f.value)">
+<form #f="ngForm" (ngSubmit)="onSubmit(f)" class="cihForm">
+  <p class="lead">Completati formularul pentru programare</p>
   <div class="form-group">
-    <label for="nume">Nume</label>
-    <input #nume="ngModel" ngModel name="nume" id="nume" class="form-control" required>
-  </div>
-  <div *ngIf="nume.touched && nume.invalid" class="alert alert-danger">
-    <p>Numele este necesar</p>
+    <label for="nume">*Nume</label>
+    <input #nume="ngModel" ngModel name="nume" id="nume" class="form-control" required maxlength="200"> 
+    <div *ngIf="nume.touched && nume.invalid" class="alert alert-danger">
+      <p>Numele este necesar</p>
+    </div>
   </div>
 
   <div class="form-group">
-    <label for="prenume">Prenume</label>
-    <input #prenume="ngModel" ngModel name="prenume" id="prenume" class="form-control" required>
+    <label for="prenume">*Prenume</label>
+    <input #prenume="ngModel" ngModel name="prenume" id="prenume" class="form-control" required maxlength="200">
+    <div *ngIf="prenume.touched && prenume.invalid" class="alert alert-danger">
+      <p>Prenumele este necesar</p>
+    </div>
   </div>
-  <div *ngIf="prenume.touched && prenume.invalid" class="alert alert-danger">
-    <p>Prenumele este necesar</p>
+
+  <div class="form-group">
+    <label for="idnp">*IDNP</label>
+    <input #idnp="ngModel" ngModel name="idnp" id="idnp" type="text" class="form-control" required maxlength="13" minlength="13" pattern="^[0-9]{13}$">
+    <div *ngIf="idnp.touched && idnp.invalid" class="alert alert-danger">
+      <p>IDNP-ul este necesar. Asigurati-va ca ati introdus corect datele.</p>
+    </div>  
   </div>
 
   <div class="form-group">
     <label for="email">Email</label>
-    <input #email="ngModel" ngModel name="email" id="email" class="form-control" required>
+    <input #email="ngModel" ngModel name="email" id="email" type="email" class="form-control" maxlength="200" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+    <div *ngIf="email.touched && email.invalid" class="alert alert-danger">
+      <p>Adresa de email este invalida.</p>
+    </div>  
   </div>
-  <div *ngIf="email.touched && email.invalid" class="alert alert-danger">
-    <p>Emailul este necesar</p>
+  
+  <div class="form-group">
+    <label for="telefon">Telefon</label>
+    <input #telefon="ngModel" ngModel name="telefon" id="telefon" class="form-control" maxlength="20" pattern="^[0-9+() -]{5,25}$">
+    <div *ngIf="telefon.touched && telefon.invalid" class="alert alert-danger">
+      <p>Numarul de telefon este invalid.</p>
+    </div>  
   </div>
 
   <button 
-    [disabled]="!(nume.valid && prenume.valid)"
+    [disabled]="!(nume.valid && prenume.valid && email.valid && idnp.valid && telefon.valid)"
     type="submit" 
-    id="skr"
     class="btn btn-primary">
     Submit
   </button>

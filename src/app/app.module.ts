@@ -7,7 +7,6 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DateComponent } from './date/date.component';
-import { TimeComponent } from './time/time.component';
 import { AppointmentFormComponent } from './appointment-form/appointment-form.component';
 import { SpecialityComponent } from './speciality/speciality.component';
 import { HomeComponent } from './home/home.component';
@@ -20,7 +19,6 @@ import { environment } from 'src/environments/environment';
   declarations: [
     AppComponent,
     DateComponent,
-    TimeComponent,
     AppointmentFormComponent,
     SpecialityComponent,
     HomeComponent,

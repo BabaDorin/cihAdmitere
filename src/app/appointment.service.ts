@@ -12,9 +12,14 @@ export class AppointmentService {
   }
 
   saveAppointment(specialitate, tur, data, ora, identitate) {
+    //
+    // It updates the appointment object from the db, setting it's 'liber' property to false
+    // and adding some additional fields like nume, prenume etc. 
+    // returns true if the appointment has been saved and everything in oke.
+    // 
     let queryPath = '/' + specialitate + '/tur' + tur + '/' + data + '/' + ora + '/'; 
 
-    this.db.object(queryPath).valueChanges().pipe(take(1)).subscribe(
+    return this.db.object(queryPath).valueChanges().pipe(take(1)).subscribe(
       result => {
         if(result['liber']){
           this.db.object(queryPath).update({
@@ -25,14 +30,13 @@ export class AppointmentService {
                 idnp: identitate.idnp,
                 telefon: identitate.telefon
               });
-        }else
-        {
-          alert('Acea data si ora este deja ocupata.');
+          return true;
         }
+        else alert('Acea data si ora este deja ocupata.');
+        return false;
       }
     )
   }
-
 
   getAll(specialitate: string, tur: number, data: string) {
     // returns only the time and the field which indicates if that specific time is available or not. ['liber']

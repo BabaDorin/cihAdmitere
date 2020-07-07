@@ -4,10 +4,10 @@
 <div *ngIf="dataAleasa" class="jumbotron jumbotron-fluid">
   <div class="container">
     <h1 class="display-4">{{ data.data }} {{ data.luna }}</h1>
-    <p class="lead">Alegeti ora.</p>
+    <p class="lead">Alegeti ora</p>
     <div class="row">
       <ng-container *ngFor="let t of time; let i = index">
-        <div class="col-md-3">
+        <div class="col-md-3 text-center">
             <div
               (click)="pickTime(t)" 
               [class.unavailable]="!t.available"
@@ -19,12 +19,18 @@
         <div *ngIf="(i + 1) % 4 === 0" class="w-100"></div>
       </ng-container>
     </div>
-    <div id="appointment">
-      <appointment-form *ngIf="timePicked"
-      [data]="data"
-      [specialitate]="specialitate"
-      [ora]="timePicked.key">
-      </appointment-form>
-    </div>
+    <appointment-form 
+    *ngIf="timePicked"
+    [data]="data"
+    [specialitate]="specialitate"
+    [ora]="timePicked.key"
+    (success)="success()">
+    </appointment-form>
+    <div id="appointment-anchor"></div>
+  </div>
+</div>
+<div *ngIf="successful" class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <p class="lead">Programarea a fost inregistrata pentru data de {{ data.data }} {{ data.luna }}, {{ora.key}}</p>
   </div>
 </div>

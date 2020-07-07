@@ -13,10 +13,11 @@ import { AppointmentService } from '../appointment.service';
 export class DateComponent implements OnDestroy {
   specialitate: string;
   dataAleasa: boolean;
-  data;
+  data; ora;
   subscription;
   timePicked;
   time;
+  successful;
 
   specialitati = [
     'educatieTimpurie',
@@ -87,21 +88,32 @@ export class DateComponent implements OnDestroy {
       this.dataAleasa = true;
 
       this.subscription = this.appointmentService.getAll(this.specialitate, this.data.tur, this.data.key).subscribe(time => {
-        console.log('called getAll(' + this.specialitate + ', ' + this.data.key + ')');
         this.time = time;
-        console.log('time object after query: ');
-        console.log(this.time);
-        this.viewportScroller.scrollToAnchor('appointment');
+        this.viewportScroller.scrollToAnchor('appointment-anchor');
       });
 
       this.timePicked = null;
+      this.successful = false;
     }
   }
 
   pickTime(t) {
     if (t.available) {
       this.timePicked = t;
+      this.successful = false;
     }
+  }
+
+  success(){
+    //
+    // This comes from appointment form and means that the appointment has been registered.
+    // After that, the pick-time and the appointment form stuff will dissapear and a success message
+    // will appear on the screen.
+    //
+    this.dataAleasa = null;
+    this.ora = this.timePicked;
+    this.timePicked = null;
+    this.successful = true;
   }
 
   ngOnDestroy(): void {
