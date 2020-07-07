@@ -18,7 +18,17 @@ export class AppointmentFormComponent{
   }
 
   onSubmit(form){
-    console.log('data: ' + this.data + '  ora: ' + this.ora)
-    this.appointmentService.saveAppointment(this.specialitate, this.data, this.ora, {nume: form['nume'], prenume:form['prenume']});
+
+    console.log('onSubmit called');
+
+    let identitate = {
+      nume: form['nume'],
+      prenume: form['prenume'],
+      email: form['email'],
+      idnp: form['idnp'],
+      telefon: form['telefon']
+    };
+
+    this.appointmentService.saveAppointment(this.specialitate, this.data.tur, this.data.key, this.ora, identitate);
   }
 }
