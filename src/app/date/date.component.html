@@ -1,7 +1,3 @@
-<p class="hint">
-  Pick an appointment date for speciality: {{ specialitate }}
-</p>
-
 <cih-card [dates]="dates" (datePicked)="datePicked($event)">
 </cih-card>
 <br>
@@ -23,10 +19,12 @@
         <div *ngIf="(i + 1) % 4 === 0" class="w-100"></div>
       </ng-container>
     </div>
-    <appointment-form *ngIf="timePicked"
-    [data]="data.key"
-    [specialitate]="specialitate"
-    [ora]="timePicked.key">
-    </appointment-form>
+    <div id="appointment">
+      <appointment-form *ngIf="timePicked"
+      [data]="data.key"
+      [specialitate]="specialitate"
+      [ora]="timePicked.key">
+      </appointment-form>
+    </div>
   </div>
 </div>

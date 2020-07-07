@@ -26,15 +26,16 @@ export class AppointmentService {
   }
 
 
-  getAll(specialitate: string, data: string) {
-    return this.db.list('/' + specialitate + '/' + data).snapshotChanges().pipe(
+  getAll(specialitate: string, tur: number, data: string) {
+    // returns only the time and the field which indicates if that specific time is available or not. ['liber']
+    return this.db.list('/' + specialitate + '/' + tur + '/' + data).snapshotChanges().pipe(
       map(actions => actions.map(a => ({ key: a.key, available: a.payload.val()['liber'] })))
     );
   }
 
-  getAllForAdmin(specialitate: string, data: string) {
-
-    return this.db.list('/' + specialitate + '/' + data).snapshotChanges().pipe(
+  getAllForAdmin(specialitate: string, tur: number, data: string) {
+    // returns the entire time object, including data about registered user like idnp, email etc.
+    return this.db.list('/' + specialitate + '/' + tur + '/' + data).snapshotChanges().pipe(
       map(actions => actions.map(a => ({ key: a.key, ...a.payload.val() as {} })))
     );
   }

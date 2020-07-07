@@ -37,7 +37,7 @@ import { environment } from 'src/environments/environment';
       { path: 'data/:specialitate', component: DateComponent},
       { path: 'admin/:specialitate', component: AdminComponent},
       { path: '**', component: Err404Component},
-    ]),
+    ], { anchorScrolling: 'enabled'}),
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule

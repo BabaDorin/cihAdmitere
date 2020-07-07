@@ -19,25 +19,46 @@ export class AdminComponent implements OnDestroy{
     this.specialitate = route.snapshot.paramMap.get('specialitate');
   }
 
-  dates = [
-    { key: "13iulie", data: 13, luna:'iulie', ziua:'Luni'},
-    { key: "14iulie", data: 14, luna:'iulie', ziua:'Marti'},
-    { key: "15iulie", data: 15, luna:'iulie', ziua:'Miercuri'},
-    { key: "16iulie", data: 16, luna:'iulie', ziua:'Joi'},
-    { key: "17iulie", data: 17, luna:'iulie', ziua:'Vineri'},
-    
-    { key: "20iulie", data: 20, luna:'iulie', ziua:'Luni'},
-    { key: "21iulie", data: 21, luna:'iulie', ziua:'Marti'},
-    { key: "22iulie", data: 22, luna:'iulie', ziua:'Miercuri'},
-    { key: "23iulie", data: 23, luna:'iulie', ziua:'Joi'},
-    { key: "24iulie", data: 24, luna:'iulie', ziua:'Vineri'},
-    
-    { key: "27iulie", data: 27, luna:'iulie', ziua:'Luni'},
-    { key: "28iulie", data: 28, luna:'iulie', ziua:'Marti'},
-    { key: "29iulie", data: 29, luna:'iulie', ziua:'Miercuri'},
-    { key: "30iulie", data: 30, luna:'iulie', ziua:'Joi'},
-    { key: "31iulie", data: 31, luna:'iulie', ziua:'Vineri'},
-  ];
+  dates = {
+    Tur1: [
+      { key: "13iulie", tur: 1, data: 13, luna: 'iulie', ziua: 'Luni' },
+      { key: "14iulie", tur: 1, data: 14, luna: 'iulie', ziua: 'Marti' },
+      { key: "15iulie", tur: 1, data: 15, luna: 'iulie', ziua: 'Miercuri' },
+      { key: "16iulie", tur: 1, data: 16, luna: 'iulie', ziua: 'Joi' },
+      { key: "17iulie", tur: 1, data: 17, luna: 'iulie', ziua: 'Vineri' },
+      { key: "18iulie", tur: 1, data: 17, luna: 'iulie', ziua: 'Sambata' },
+
+      { key: "20iulie", tur: 1, data: 20, luna: 'iulie', ziua: 'Luni' },
+      { key: "21iulie", tur: 1, data: 21, luna: 'iulie', ziua: 'Marti' },
+      { key: "22iulie", tur: 1, data: 22, luna: 'iulie', ziua: 'Miercuri' },
+      { key: "23iulie", tur: 1, data: 23, luna: 'iulie', ziua: 'Joi' },
+      { key: "24iulie", tur: 1, data: 24, luna: 'iulie', ziua: 'Vineri' },
+      { key: "25iulie", tur: 1, data: 24, luna: 'iulie', ziua: 'Sambata' },
+
+      { key: "27iulie", tur: 1, data: 27, luna: 'iulie', ziua: 'Luni' },
+      { key: "28iulie", tur: 1, data: 28, luna: 'iulie', ziua: 'Marti' },
+      { key: "29iulie", tur: 1, data: 29, luna: 'iulie', ziua: 'Miercuri' },
+      { key: "30iulie", tur: 1, data: 30, luna: 'iulie', ziua: 'Joi' },
+      { key: "31iulie", tur: 1, data: 31, luna: 'iulie', ziua: 'Vineri' },
+      { key: "1august", tur: 1, data: 31, luna: 'iulie', ziua: 'Sambata' }
+    ],
+
+    Tur2: [
+      { key: "27iulie", tur: 1, data: 27, luna: 'iulie', ziua: 'Luni' },
+      { key: "28iulie", tur: 1, data: 28, luna: 'iulie', ziua: 'Marti' },
+      { key: "29iulie", tur: 1, data: 29, luna: 'iulie', ziua: 'Miercuri' },
+      { key: "30iulie", tur: 1, data: 30, luna: 'iulie', ziua: 'Joi' },
+      { key: "31iulie", tur: 1, data: 31, luna: 'iulie', ziua: 'Vineri' },
+      { key: "1august", tur: 1, data: 31, luna: 'iulie', ziua: 'Sambata' },
+
+      { key: "27iulie", tur: 1, data: 27, luna: 'iulie', ziua: 'Luni' },
+      { key: "28iulie", tur: 1, data: 28, luna: 'iulie', ziua: 'Marti' },
+      { key: "29iulie", tur: 1, data: 29, luna: 'iulie', ziua: 'Miercuri' },
+      { key: "30iulie", tur: 1, data: 30, luna: 'iulie', ziua: 'Joi' },
+      { key: "31iulie", tur: 1, data: 31, luna: 'iulie', ziua: 'Vineri' },
+      { key: "1august", tur: 1, data: 31, luna: 'iulie', ziua: 'Sambata' }
+    ]
+  }
 
   // time = [
   //   { t: '9:00', available: true}, 
@@ -56,7 +77,7 @@ export class AdminComponent implements OnDestroy{
       this.data = d;
       this.dataAleasa = true;
       
-      this.subscription = this.appointmentService.getAllForAdmin(this.specialitate, this.data.key)
+      this.subscription = this.appointmentService.getAllForAdmin(this.specialitate, this.data.tur, this.data.key)
         .subscribe(time => 
           {
           this.time = time;
